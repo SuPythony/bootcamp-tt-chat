@@ -7,29 +7,55 @@
 Before you scroll down to the questions, try this:
 
 1. **Don't peek at the questions yet.** Pretend you've just been handed a brief
-   that says: *"Learn these topics as deeply as you can — g++ CLI, Make, Git,
-   sockets, and memory management in C++."* That's the whole assignment.
+   that says: _"Learn these topics as deeply as you can — g++ CLI, Make, Git,
+   sockets, and memory management in C++."_ That's the whole assignment.
    How would you go about it? What would you read, what would you try, in what
    order, and how would you know when you've understood something well enough?
    Write that plan down in this README, then actually follow it.
 
+<hr>
+
+### Plan:
+
+#### g++:
+
+Read the man page, search for important flags online.
+
+#### Make:
+
+Found this on a Google search: https://makefiletutorial.com/. Go through it.
+
+#### Git:
+
+Already used Git a lot before, brush up on some concepts that I've not used too many times.
+
+#### sockets:
+
+Google search, read articles, watch videos if needed. Can also ask LLMs for a structured learning path.
+
+#### Memory Management:
+
+I have previously read about smart pointers and RAII. Have experience with memory management in C. Combine these and practice with short snippets.
+
+<hr>
+
 2. **Now go through the questions below and answer them like you're an LLM.**
    No live Googling, no Stack Overflow, no asking ChatGPT mid-question. You may
-   refer to notes *you* took during step 1 — that's your context window. Answer
+   refer to notes _you_ took during step 1 — that's your context window. Answer
    from what you've internalised.
 
 3. **Reflect on how it went.** Honestly:
-   - Did your self-directed learning actually prepare you for the questions, or
-     did you over-study things that never came up?
-   - Which questions blindsided you? Why — was the topic missing from your
-     plan, or did you skim past it?
-   - Map your experience onto the *known knowns / known unknowns / unknown
-     unknowns* idea. The interesting category is usually the last one: things
-     you didn't even realise you should have learned. What were yours, and how
-     could a better learning plan have surfaced them earlier?
+    - Did your self-directed learning actually prepare you for the questions, or
+      did you over-study things that never came up?
+    - Which questions blindsided you? Why — was the topic missing from your
+      plan, or did you skim past it?
+    - Map your experience onto the _known knowns / known unknowns / unknown
+      unknowns_ idea. The interesting category is usually the last one: things
+      you didn't even realise you should have learned. What were yours, and how
+      could a better learning plan have surfaced them earlier?
 
 The point of this exercise isn't to get the questions "right" — it's to notice
-the gap between how you *think* you learn and how you actually do, so you can
+the gap between how you _think_ you learn and how you actually do, so you can
 close it.
 
 ## Learning How to Learn
@@ -53,16 +79,16 @@ close it.
 ## Learn Basics of Make
 
 - Create a Makefile that will speed up the process.
-- [Quickstart tutorial to make](https://makefiletutorial.com/) - Learn make 
+- [Quickstart tutorial to make](https://makefiletutorial.com/) - Learn make
   fundamentals with practical examples and common patterns.
 - How else can you learn about make?
 - How can you tell if the resource you are using is correct?
 - Create a makefile such that when you run `make` with no arguments, it will:
-  - Create `build/` directory if it does not exist
-  - Create executables **client** and **server** in `build/`, if needed
-  - How does make know when it needs to rebuild the executables?
-  - Change your Makefile such that `make clean` will remove `build/` and all
-    its contents
+    - Create `build/` directory if it does not exist
+    - Create executables **client** and **server** in `build/`, if needed
+    - How does make know when it needs to rebuild the executables?
+    - Change your Makefile such that `make clean` will remove `build/` and all
+      its contents
 - What are the most important command line arguments to learn for make?
 - What are the most important directives to learn about in Makefile?
 - What are the most important commands to implement in your Makefile?
@@ -75,13 +101,13 @@ close it.
 - Commit and push your changes to git
 - Each commit should be responding to a single task or question
 - Why is it important to keep your commit to a single task or question?
-- Is it better to have a lot of very small commits, or one big commit when 
+- Is it better to have a lot of very small commits, or one big commit when
   everything is working?
 - What are the most important commands to know in git?
 
 ## Introduction to Sockets
 
-- Read the code in `src/tcp-echo-client.cc` and add a way to change the 
+- Read the code in `src/tcp-echo-client.cc` and add a way to change the
   message sent using command line arguments
 - **Example**: `./client "hello message from the command prompt"` should send
   `"hello message from the command prompt"` to the server
@@ -93,10 +119,10 @@ close it.
 - How do you change the code to send to a IPv6 address instead of IPv4?
 - **Bonus**: How do you change the client code to connect by hostname instead
   of IP address?
-  
+
 ## Introduction to Memory Management
 
-- What is happening in line 26 of `tcp-echo-client.cc`? 
+- What is happening in line 26 of `tcp-echo-client.cc`?
   `if (inet_pton(AF_INET, kServerAddress.c_str(), &address.sin_addr) <= 0) {`
 - What is happening in line 31 of `tcp-echo-client.cc`?
   `if (connect(my_sock, (sockaddr *)&address, sizeof(address)) < 0) {`
@@ -120,7 +146,7 @@ close it.
   protocols?
 - What is the most authoritative source of information about the C++
   programming language?
-- What information can you find about using Markdown when structuring prompts 
+- What information can you find about using Markdown when structuring prompts
   to LLMs?
 - What is the difference between LLM and AI?
 - Is it grammatically correct in English to say "a LLM" or "an LLM"? Why?
