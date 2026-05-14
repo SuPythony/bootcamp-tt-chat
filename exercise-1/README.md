@@ -66,7 +66,7 @@ close it.
 - How can you find the information required to complete these tasks?
   <br> By searching online, going through corresponding documentation/man page
 - How can you tell if the source of your information is good?
-  <br> See if it is from a reputable source (university website, official docs). If it's an open-source blog/website, check github stars/comments.
+  <br> Skim over the topics/content once, look for source feedback like comments/upvotes/stars.
 - How would you define "good" in this situation?
   <br> A resource that does not mislead and gives correct and precise info, and covers most of the important ideas and topics.
 
@@ -96,17 +96,24 @@ close it.
 - [Quickstart tutorial to make](https://makefiletutorial.com/) - Learn make
   fundamentals with practical examples and common patterns.
 - How else can you learn about make?
+  <br> Other links, man page for arguments
 - How can you tell if the resource you are using is correct?
+  <br> See if it is from a reputable source (university website, official docs). If it's an open-source blog/website, check github stars/comments.
 - Create a makefile such that when you run `make` with no arguments, it will:
     - Create `build/` directory if it does not exist
     - Create executables **client** and **server** in `build/`, if needed
     - How does make know when it needs to rebuild the executables?
+      <br> It compares the file timestamps of the target and prerequisites
     - Change your Makefile such that `make clean` will remove `build/` and all
       its contents
 - What are the most important command line arguments to learn for make?
+  <br> Usually used without arguments to run the first target. But we can give the target name as an argument, this is used mainly for clean. There are arguments like -s and -i to suppress outputs and errors.
 - What are the most important directives to learn about in Makefile?
+  <br> ifeq, ifdef, define, .PHONY
 - What are the most important commands to implement in your Makefile?
+  <br> Creating object files with g++ and then linking them into an executable. Cleaning up/removing the build folder to reset the build.
 - Which ones are essential, which ones are nice to haves?
+  <br> Object and executable generation are essential. Cleaning up is nice to have.
 
 ## Learn Basics of Git
 
