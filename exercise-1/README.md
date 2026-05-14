@@ -122,9 +122,12 @@ close it.
 - Commit and push your changes to git
 - Each commit should be responding to a single task or question
 - Why is it important to keep your commit to a single task or question?
+  <br> This keeps the commit concise and focused, and makes it easier to revert in case of any problems going further.
 - Is it better to have a lot of very small commits, or one big commit when
   everything is working?
+  <br> Small commits are generally better as it's easier to track what is implemented in which commit. Also for large team projects, we can create a separate pull request for a single feature, and commit small changes/improvements in it. Once the whole feature is done, we can squash and merge all the commits as a single feature commit.
 - What are the most important commands to know in git?
+  <br> add, commit, push, pull, status, branch, checkout, clone, merge, log, diff
 
 ## Introduction to Sockets
 
