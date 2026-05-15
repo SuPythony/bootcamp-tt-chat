@@ -137,12 +137,23 @@ close it.
   `"hello message from the command prompt"` to the server
 - Commit your changes into git
 - What do all these headers do?
+  <br> arpa/inet.h - inet_pton, htons - IP address related functions
+  <br> iostream - standard IO
+  <br> netinet/in.h - sockaddr_in, AF_INET, SOCK_STREAM - network address related structs and constants
+  <br> string - standard strings
+  <br> sys/socket.h - socket, connect, send - socket related functions
+  <br> sys/types.h - ssize_t - basic types apart from the built-in ones
+  <br> unistd.h - read, close - POSIX system calls
 - How do you find out which part of the below code comes from which header?
+  <br> Read man pages of the system calls to find in which header they are defined. Also in an IDE, we can remove a particular header and figure out which names are included in it from the IDE errors.
 - How do you change the code so that you are sending messages to servers
   other than localhost?
+  <br> Set the server address in the variable kServerAddress
 - How do you change the code to send to a IPv6 address instead of IPv4?
+  <br> Use AF_INET6, sockaddr_in6. Change field names from sin_field to sin6_field.
 - **Bonus**: How do you change the client code to connect by hostname instead
   of IP address?
+  <br> We can use getaddrinfo to get the IP address and alongside construct the sockaddr struct for us. It resolved the host name and gets its IP.
 
 ## Introduction to Memory Management
 
