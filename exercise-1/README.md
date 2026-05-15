@@ -185,16 +185,24 @@ close it.
 ## Learn Basics of Creating a C++ Project in Your IDE
 
 - How do you compile and run your project in your IDE?
+  <br> In VSCode, I compile and run from the terminal. Directly uses make or g++.
+  <br> I CLion, I create configurations for building and running a project and run them using a single button/shortcut key.
 
 ## Improving Interactions with LLMs
 
 - What is the most authoritative source of information about `socket()`
   from `<sys/socket.h>`?
+  <br> Socket manpage (`man socket`)
 - What is the most authoritative source of information about the TCP and IP
   protocols?
+  <br> IETF RFCs (791, 793/9293, 8200)
 - What is the most authoritative source of information about the C++
   programming language?
+  <br> The ISO C++ standard, cppreference.com
 - What information can you find about using Markdown when structuring prompts
   to LLMs?
+  <br> Markdown helps in structuring complex and multi-step prompts. If complex prompts are structured using Markdown, they generally result in better responses, as the LLM has been trained on a huge amount of Markdown data and understands the different elements. You can divide the prompt into separate headings, use formatting such as bold/italics to mark important info.
 - What is the difference between LLM and AI?
+  <br> An LLM specifically refers to a Large Language Model, that specialises in generating text given some prompt text. It uses a particular type of architecture (transformers). AI (Artificial Intelligence) on the other hand is a broad and general term that collectively refers to all machine learning, deep learning techniques/models (include LLMs).
 - Is it grammatically correct in English to say "a LLM" or "an LLM"? Why?
+  <br> "an LLM", becauce on pronouncing LLM, the initial sound is the name of the letter L, pronounced ell (e as in elf), which is a vowel sound and should be preceded with an.
