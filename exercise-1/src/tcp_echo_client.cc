@@ -6,9 +6,12 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-int main() {
+int main(int argc, char** argv) {
   // #Question - are these the same type?
   std::string message = "Hello from client"; // no, RHS is char* (or char[])
+  if (argc > 1) {
+    message = argv[1];
+  }
   const int kPort = 8080; // yes
   const std::string kServerAddress = "127.0.0.1"; // no, RHS is char* (or char[])
   sockaddr_in address;
