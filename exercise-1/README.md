@@ -159,15 +159,28 @@ close it.
 
 - What is happening in line 26 of `tcp-echo-client.cc`?
   `if (inet_pton(AF_INET, kServerAddress.c_str(), &address.sin_addr) <= 0) {`
+  <br> inet_pton converts an IP address string to its corresponsing sockaddr_in.sin_addr (type in_addr) struct. We pass the pointer to this struct as the third argument, which is modified by the function. The function returns a value less than or equal to 0 if there's an error while converting, so we check for that to handle any erros.
 - What is happening in line 31 of `tcp-echo-client.cc`?
   `if (connect(my_sock, (sockaddr *)&address, sizeof(address)) < 0) {`
+  <br> connect needs a pointer to a sockaddr struct as the second argument. sockaddr is a general struct used to accomodate both sockaddr_in (IPv4) and sockaddr_in6 (IPv6) structs which can be typecast to it. So we cast the pointer to address (sockaddr_in) to a sockaddr pointer. Also connect returns a value less than 0 if there's an error while connecting, so we check for and handle that.
 - What is the difference between a pointer and a reference?
+  <br> A pointer stores the actual memory address of a variable. A reference is just like a different name tag for the variable, pointing to the same memory location.
 - When is it better to use a pointer?
+  <br> When you want to do manual memory management, need to use pointer arithmetic for accessing contiguous values, need the address of a variable, when the value can be empty (nullptr)
 - When is it better to use a reference?
+  <br> Mainly used while defining function parameters. On passing a variable as a function argument that is referenced, the value of the variable is not copied and instead a reference to it is passed. This way costly copying operations can be skipped, and we can also change the value of the original variable from inside the function.
 - What is the difference between `std::string` and a C-style string?
+  <br> std::string is a C++ data type that manages it's own internal representation of a C-style string, doing memory management and the heavy-lifitng. It provides a nice set of methods to use and modify the string.
+  <br> A C-style string stores the string as an array of chars (or char\* pointing to first character) and uses '\0' to mark the end of a string. While using it we need to manually handle correct placement of '\0' and memory management.
 - What type is a C-style string?
+  <br> A char array (char[]) or equivalently a pointer to a char (char\*), which the array decays to on passing as arguments.
 - What happens when you iterate a pointer?
+  <br> The pointer's value changes by the given amount multiplied by the size of the datatype the pointer points to. For example, ptr++ (where ptr is int*) will set ptr = (ptr + 1*sizeof(int)) = ptr + 4. Similarly, ptr -= n, will set ptr = (ptr - n*sizeof(int)) = (ptr - n*4)
 - What are the most important safety tips to know when using pointers?
+  <br> Don't access invalid memory addresses - on changing the pointer's value it might point to an invalid memory address (address with a garbage value), which will give unexpected results.
+  <br> Before dereferencing a pointer, ensure the pointer is not nullptr, as dereferencing nullptr is undefined.
+  <br> If allocating memory on the heap using new, always ensure to delete it after use to return it back to the system.
+  <br> Don't dereference pointer after deallocating it (using delete or free).
 
 ## Learn Basics of Creating a C++ Project in Your IDE
 
