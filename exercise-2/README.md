@@ -79,8 +79,11 @@
 ## Thinking About Performance
 
 - Does writing code this way have any impact on performance?
+  <br> Without compiler optimizations, yes, calling and returning from functions in assembly requires extra instructions for managing the stack and register states and might impact performance a bit. But when using compiler optimizations (-O2 and above) the compiler tries to make the functions inline, essentially generating the same assembly as one before refactoring, and thus not impacting performance in any meaningful way.
 - What do we mean when we say performance?
+  <br> It generally means how fast a program performs, but can broadly refers to one of these depending on context: Latency, Throughput, CPU processing time.
 - How do we measure performance in a program?
+  <br> Use profiling, perf command.
 
 ## Play with Git
 
