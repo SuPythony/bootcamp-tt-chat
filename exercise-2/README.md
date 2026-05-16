@@ -68,9 +68,13 @@
 ## Refactoring: Extract Function
 
 - What is different in this code compared to exercise-1?
+  <br> All the important steps in setting up the client and server are extracted into self-contained functions.
 - Is this code better or worse than exercise-1?
+  <br> This is better as improves the code readability. It also makes it easy for someone new to the codebase to understand the code, maked the code more approachable.
 - What are the tradeoffs compared to exercise-1?
+  <br> We give away the simplicity and speed of writing the program while improving the readability and maintainability.
 - Are you able to spot any mistakes or inconsistencies in the changes?
+  <br> Just the bugs mentioned above.
 
 ## Thinking About Performance
 
