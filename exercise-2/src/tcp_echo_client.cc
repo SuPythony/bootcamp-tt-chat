@@ -43,6 +43,7 @@ void connect_to_server(int sock, sockaddr_in &server_address) {
 void send_and_receive_message(int sock, const std::string &message) {
   const int kBufferSize = 1024;
   // #Question - is buffer the best name we can use?
+  // Ans: We can use a more specific name like read_buffer
   char buffer[kBufferSize] = {0};
 
   // Send the message to the server
@@ -61,6 +62,8 @@ void send_and_receive_message(int sock, const std::string &message) {
 }
 
 // #Question - what can be improved in this function?
+// Ans: The default message if no argument is passed is never used, as it exits if no argument is there.
+// Instead set message to argv[1] when argc == 2 and raise error if argc > 2
 std::string read_args(int argc, char *argv[]) {
   std::string message = "Hello from client";
   if (argc == 1) {

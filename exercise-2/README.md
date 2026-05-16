@@ -53,7 +53,17 @@
 
 - Read the code in `src/`
 - Are there any bugs in this code?
+  <br> Yes
+  <br> In client:
+  <br> 1. In read_args, the default message if no argument is passed is never used, as it exits if no argument is there.
+  <br> 2. In send_and_receive_message, after read, the buffer is not null-terminated which will lead to undefined behaviour.
+  <br> In server:
+  <br> 1. set_socket_options returns an unused bool
+  <br> 2. In handle_accept, after read, the buffer is not null-terminated which will lead to undefined behaviour.
+  <br> General:
+  <br> In both client and server we read only once and hope that the message is fully received. As we are using TCP, this is not guaranteed and we might need re-reading to get the intended data.
 - What can you do to identify if there are bugs in the code?
+  <br> Use compiler warnings by using flags like -Wextra -Wall. Use the address sanitizer using -fsanitize. Use valgrind for catching memory bugs/leaks. Come up with and test using several edge cases.
 
 ## Refactoring: Extract Function
 
