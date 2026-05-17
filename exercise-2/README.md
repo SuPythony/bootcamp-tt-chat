@@ -127,4 +127,6 @@
 ### Memory Management and Debug Mode in Your IDE
 
 - How do you see the memory layout of a `std::string` from your IDE debug mode?
+  <br> Not possible in VSCode. In CLion, under Threads & Variables, right click on a variable and click Show in Memory View or press Ctrl+Enter. It will show the variable's memory layout in hexadecimal.
 - How do you see the memory layout of a struct from your IDE debug mode?
+  <br> Same as above.
