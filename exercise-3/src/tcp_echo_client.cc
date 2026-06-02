@@ -7,22 +7,23 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-void check_error(bool test, std::string error_message) {
+void check_error(bool test, const std::string& error_message, int sock) {
   if (test) {
     std::cerr << error_message << "\n";
+    if (sock >= 0) close(sock);
     exit(EXIT_FAILURE);
   }
 }
 
 int create_socket() {
   int sock = socket(AF_INET, SOCK_STREAM, 0);
-  check_error(sock < 0, "Socket creation error\n");
+  check_error(sock < 0, "Socket creation error\n", -1);
   return sock;
 }
 
 void set_binary_address(sockaddr_in &address, const std::string &server_ip) {
   auto err_code = inet_pton(AF_INET, server_ip.c_str(), &address.sin_addr);
-  check_error(err_code <= 0, "Invalid address/ Address not supported\n");
+  check_error(err_code <= 0, "Invalid address/ Address not supported\n", -1);
 }
 
 sockaddr_in create_address(const std::string &server_ip, int port) {
@@ -37,7 +38,7 @@ sockaddr_in create_address(const std::string &server_ip, int port) {
 void connect_to_server(int sock, sockaddr_in &server_address) {
   auto err_code =
       connect(sock, (sockaddr *)&server_address, sizeof(server_address));
-  check_error(err_code < 0, "Connection Failed\n");
+  check_error(err_code < 0, "Connection Failed\n", sock);
 }
 
 void send_and_receive_message(int sock, const std::string &message) {
