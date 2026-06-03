@@ -20,13 +20,18 @@
   `create_socket()` in [Compiler Explorer](https://godbolt.org) - Interactive
   tool for exploring how C++ code compiles to assembly
 - What is happening here?
+  <br> A: The refactord version has a higher number of instuctions. This is due to function call overhead (adhering to the calling convention), the string contructor (in the old version, the message is a constant in .rodata).
 - Can you think of any different approaches to this problem?
+  <br> A: We can make `check_error` inline. We can use `std::string_view`. These will reduce the no of instructions only when using optimization flags.
 - How can you modify your Makefile to generate assembly code instead of
   compiled code?
+  <br> A: Make .s targets and compile with -S flag to generate assembly.
 - **Note**: You can save the generated assembly from Compiler Explorer
 - **Bonus**: Can you view assembly code using your IDE?
+  <br> A: Compile to assembly and open it in the IDE.
 - **Bonus**: How do you see the assembly when you step through each line in
   debugging mode from your IDE?
+  <br> A: Open the disassembly view in the run and debug tab.
 - [x86 assembly reference](http://ref.x86asm.net/) - Comprehensive reference
   for x86 assembly language instructions and syntax
 
