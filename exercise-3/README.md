@@ -40,23 +40,33 @@
 - Make sure you have `-fsanitize=address` in both your `CXX_FLAGS` and
   `LD_FLAGS` in your Makefile
 - What do `-fsanitize=address`, `CXX_FLAGS` and `LD_FLAGS` mean?
+  <br> A: `-fsanitize=address` enables the address sanitizer. `CXXFLAGS` and `LDFLAGS` are convention in Makefile for the flags passed to the compiler (building object files) and the linker (linking object files) repsectively.
 - With the new tool of the Compiler Explorer, and keeping in mind what you
   have learned about how to use debug mode
 - What happens when you look at a `std::string` using the above methods?
+  <br> A: Through Compiler Explorer, without any optimization flags, it stores the raw string in a `.string` directive and calls `basic_string`'s constructor along with an allocator to create the string object.
+  <br> With optimization flags, instead of having a directive, it uses the `movabs` instruction (on x86-64) to construct the string directly in binary (ascii) through several 64-bit integral constants. When string are short, it uses Small String Optimization (SSO) to store the string directly on the stack. If the string is longer, it calls `new` to allocate memory on the heap for the string object and then constructs the string using the above mentioned process.
 - Where is the text in your `std::string`?
+  <br> A: With SSO it's in the stack, without it it's allocated on the heap.
 - What is `std::optional`?
+  <br> A: It is a container for a value of a particular type that may or may not be present. It can either have a valid value or no value (in which case, it is said to have `std::nullopt`).
 - How do you find out the memory layout of a `std::optional`?
+  <br> A: By reading cppreference and experimenting on compiler explorer. It stores the value within itself, directly on the stack without allocating on the heap.
 - Read https://en.cppreference.com/w/cpp/memory#Smart_pointers - Guide to
   modern C++ memory management using smart pointers
 - Which pointer types are the most important to know about?
+  <br> A: `unique_ptr`, `shared_ptr`, `weak_ptr`
 - Which smart pointer should you use by default if you can?
+  <br> A: `unique_ptr`
 - Does changing your optimization level in `CXXFLAGS` from `-O0` to `-O3` have
   any impact on the answers to any of the above questions?
+  <br> A: As already mentioned, using `-O3` there's aggressive compiler optimization and short strings are SSO'd and `movabs` is used.
 
 ## More Thinking About Performance
 
 - After your experiments with Compiler Explorer, do you have any updates for
   your answers in exercise-2?
+  <br> A: Not really. But now I'll use Compiler Explorer as a debugging and performance analysis tool, to see what exactly is happening with my code and how are different compiler flags really affecting it.
 
 ### Bonus: Do Not Watch Now
 
